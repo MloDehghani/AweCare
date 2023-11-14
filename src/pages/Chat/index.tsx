@@ -219,21 +219,27 @@ const Chat = () => {
               className={styles.input}
             />
             {text.length > 0 &&  !isLoading ?
-              <div
-                onClick={() => {
+              // <div
+              //   onClick={() => {
+              //     setShowTextBox(false);
+              //     sendToApi(text);
+              //     setText("");
+              //   }}
+              //   className={styles.sendIcon}
+              // />
+              <img className={styles.sendIcon} onClick={() => {
                   setShowTextBox(false);
                   sendToApi(text);
-                  setText("");
-                }}
-                className={styles.sendIcon}
-              />
+                  setText("");                
+              }} src="./Acord/Send.svg" alt="" />
             :
             undefined}
           </div>
         ) : (
           <div className={styles.twoButtonsContainer}>
             <Button theme="Awecare-RoundedButton" onClick={handleClick}>
-              <div className={styles.horizontalSuggestionIcon} />
+              {/* <div className={styles.horizontalSuggestionIcon} /> */}
+              <img src="./Acord/hSuggest.svg" />
             </Button>
             <div className={styles.voiceRecorder}>
               <VoiceRecorder
@@ -259,7 +265,8 @@ const Chat = () => {
                 document.addEventListener('click',closeTextBox)
               }}
             >
-              <div className={styles.keyboardIcon} />
+              {/* <div className={styles.keyboardIcon} /> */}
+              <img src="./Acord/keyboard3.svg" />
             </Button>
           </div>
         )}
