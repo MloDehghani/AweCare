@@ -15,13 +15,13 @@ import ChatSection from "../../components/ChatSection";
 import { checkBotId } from "../../Api/botId";
 
 
-const suggestions = [
-  " When should I visit the doctor for a check-up?",
+// const suggestions = [
+//   " When should I visit the doctor for a check-up?",
 
-  "What points should I observe before surgery",
+//   "What points should I observe before surgery",
 
-  "How long is the recovery period after surgery ",
-];
+//   "How long is the recovery period after surgery ",
+// ];
 
 // const hSuggestions = [
 //   " What should I do in thiscase?",
