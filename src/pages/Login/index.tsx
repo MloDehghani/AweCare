@@ -102,7 +102,9 @@ const Login = () => {
         </Button>
       </div>
       <div className={styles.account}>
-        Don't have an account? <a>Sign up</a>
+        Don't have an account? <a onClick={() => {
+          navigate('/register')
+        }}>Sign up</a>
       </div>
     </section>
   );

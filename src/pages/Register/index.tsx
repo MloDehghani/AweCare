@@ -137,7 +137,7 @@ const Register = () => {
         </Button>
       </div>
       <div className={styles.account}>
-        Already have an account? <a>Sign in</a>
+        Already have an account? <a onClick={() => navigate('/login')}>Sign in</a>
       </div>
     </section>
   );
