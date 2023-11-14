@@ -38,7 +38,8 @@ function ChatSection(props:ChatSectionProp) {
                     <div className={styles.firstLevelofAi}>
                       <div className={styles.secondLevelofAi}>
                         <div className={styles.thirdLevelofAi}>
-                          <div className={styles.aiIcon} />
+                          {/* <div className={styles.aiIcon} /> */}
+                          <img src="./Acord/aiIcon.svg" className={styles.aiIcon} alt="" />
                         </div>
                         <div className={styles.lastLevelofAi}>{item.message}</div>
                       </div>

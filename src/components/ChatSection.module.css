@@ -2,7 +2,7 @@
   @apply pt-10  h-[80vh] flex justify-center w-[100%] overflow-y-scroll;
 }
 .aiIcon {
-  @apply bg-[url('./Acord/aiIcon.svg')] w-[33px]  h-[32px];
+  @apply bg-[url('./Acord/aiIcon.svg')] w-[33px] min-w-[33px] min-h-[33px]  h-[32px];
 }
 .secondDiv {
   @apply w-[90%];
