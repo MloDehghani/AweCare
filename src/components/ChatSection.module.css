@@ -1,0 +1,27 @@
+.chatSectionContainer {
+  @apply pt-10  h-[80vh] flex justify-center w-[100%] overflow-y-scroll;
+}
+.aiIcon {
+  @apply bg-[url('./Acord/aiIcon.svg')] w-[33px]  h-[32px];
+}
+.secondDiv {
+  @apply w-[90%];
+}
+.secondLevelofUser {
+  @apply ml-auto w-fit mb-5;
+}
+.lastLevelofUser {
+  @apply rounded-[8px]  px-4 py-3 bg-[#E6F9F4]  text-secondary-color/80 leading-[17px] text-[14px] font-[400];
+}
+.firstLevelofAi {
+  @apply w-fit mb-5;
+}
+.secondLevelofAi {
+  @apply flex;
+}
+.thirdLevelofAi {
+  @apply pr-[2px];
+}
+.lastLevelofAi {
+  @apply rounded-[8px] ml-3 px-4 py-3 bg-[#F4F5FF]  text-secondary-color/80 leading-[17px] text-[14px] font-[400];
+}

@@ -1,0 +1,28 @@
+.Acord-TextField-container {
+  @apply flex flex-col  w-[100%]  gap-y-1;
+}
+.Acord-TextField-label {
+  @apply leading-[19.36px] text-[16px] font-[500] text-secondary-color;
+}
+.Acord-TextField-input {
+  @apply focus:outline-none w-full rounded-[4px]  placeholder:leading-[27.25px]  placeholder:text-[16px]  placeholder:font-[300]   pb-[12px] pt-[10px]  placeholder:text-placeholder-color  bg-input-color;
+}
+
+.Acord-TextField-inValid {
+  @apply border-red-500 border;
+}
+.Acord-TextField-box {
+  @apply rounded-[4px] flex items-center justify-between bg-input-color px-[16px];
+}
+.Acord-TextField-togglePassword {
+  @apply cursor-pointer;
+}
+.Acord-TextField-icon-eye {
+  @apply bg-[url('./Acord/eye.svg')] w-[25px] h-[22px];
+}
+.Acord-TextField-icon-eyeOff {
+  @apply bg-[url('./Acord/eyeOff.svg')] w-[25px] h-[22px];
+}
+.Acord-TextField-error {
+  @apply text-red-500 text-xs -mt-1;
+}

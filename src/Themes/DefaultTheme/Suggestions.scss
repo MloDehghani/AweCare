@@ -1,0 +1,12 @@
+.Acord-Suggestions-container {
+  @apply flex flex-col  items-center;
+}
+.Acord-Suggestions-title {
+  @apply leading-[19.36px] text-[16px] font-[500] text-[#253343]/80 mb-2;
+}
+.Acord-Suggestions-list {
+  @apply space-y-2;
+}
+.Acord-Suggestions-listItem {
+  @apply bg-[#F4F5FF] cursor-pointer px-6 py-4 rounded-[8px] text-[#253343]/80  leading-[17px] text-[14px] font-[400];
+}

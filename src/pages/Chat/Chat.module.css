@@ -1,0 +1,50 @@
+.container {
+  @apply h-[100%] bg-white    overflow-y-scroll;
+}
+.suggest {
+  position: absolute;
+  width: -webkit-fill-available;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  top: 200px;
+  justify-content: center;
+  z-index: 50;
+}
+.startTextContainer {
+  @apply w-[100%] absolute bottom-[70px] flex justify-center items-center px-4;
+}
+.hSuggestion {
+  @apply pl-[5%];
+}
+.startChat {
+  @apply text-[16px] text-center leading-[28px] font-[500]  text-secondary-color/80 px-2 mb-[50px];
+}
+.buttonsContainer {
+  @apply flex justify-center items-center;
+}
+.showText {
+  @apply absolute flex justify-center items-center w-[90%] outline-none border-none bottom-6 h-[50px];
+}
+.input {
+  @apply w-[100%] h-[37px] rounded-[8px] bg-[#E8EAED] px-3 py-0 pr-[40px] text-[#253343] border-none outline-none;
+}
+
+.twoButtonsContainer {
+  @apply absolute w-[90%] bottom-10 h-[50px] flex justify-between items-center;
+}
+.voiceRecorder {
+  @apply z-[101] pl-[18px];
+}
+.keyboardButton {
+  @apply w-[56px] h-[56px]  border-[1px] border-white flex justify-center cursor-pointer items-center rounded-full;
+}
+.horizontalSuggestionIcon {
+  @apply bg-[url('./Acord/hSuggest.svg')] w-[25px]  h-[23px];
+}
+.keyboardIcon {
+  @apply bg-[url('./Acord/keyboard3.svg')] w-[25px]  h-[23px];
+}
+.sendIcon {
+  @apply bg-[url('./Acord/Send.svg')] w-[25px]  h-[23px] absolute z-[20] right-[10px];
+}

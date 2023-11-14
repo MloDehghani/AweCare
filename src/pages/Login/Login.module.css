@@ -1,0 +1,63 @@
+.section {
+  @apply h-screen px-6 flex flex-col;
+}
+
+.title {
+  @apply text-secondary-color leading-[35.84px] text-[28px] mt-6 font-[600];
+}
+.userName {
+  @apply mt-[50px];
+}
+.email,
+.password {
+  @apply mt-[16px];
+}
+.forget {
+  @apply text-right mt-2 mb-8  font-[400] text-[14px] cursor-pointer leading-[21.07px] text-[#0077FF];
+}
+.button {
+  @apply mt-[32px];
+}
+.spacer {
+  @apply mt-[32px]  flex items-center justify-center mx-auto w-[90%] mb-[25px];
+}
+
+.spacer > div:first-child {
+  background: linear-gradient(
+    to left,
+    rgba(140, 138, 147, 1),
+    rgba(140, 138, 147, 0)
+  );
+  height: 1px;
+  width: 100%;
+}
+
+.spacer > div:nth-child(2) {
+  @apply text-secondary-color opacity-[87] px-2 font-[300] text-[16px] leading-[27.25px];
+}
+
+.spacer > div:nth-child(3) {
+  background: linear-gradient(
+    to right,
+    rgba(140, 138, 147, 1),
+    rgba(140, 138, 147, 0)
+  );
+  height: 1px;
+  width: 100%;
+}
+
+.google-button {
+  @apply mt-[7px];
+}
+.google-container {
+  @apply flex justify-center items-center;
+}
+.google-container img {
+  @apply mr-2 w-4;
+}
+.account {
+  @apply mt-6  xl:mt-3 rounded-[5px]  h-[50px]  text-secondary-color text-[14px] font-[500] leading-[24px];
+}
+.account a {
+  @apply font-[400] text-[14px] leading-[21.07px] text-[#0077FF] cursor-pointer;
+}

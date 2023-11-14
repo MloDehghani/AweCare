@@ -1,0 +1,9 @@
+.Acord-HorizontalSuggestions-list {
+  @apply flex  overflow-x-auto my-2 w-full;
+}
+.Acord-HorizontalSuggestions-listItem {
+  @apply pr-1;
+}
+.Acord-HorizontalSuggestions-listSecondLevel {
+  @apply border border-[#ccc] w-fit cursor-pointer whitespace-nowrap px-4 py-3 rounded-[8px] bg-[#E6F9F4];
+}

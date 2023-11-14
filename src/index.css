@@ -1,0 +1,42 @@
+button {
+    background-color: unset
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hiddenScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+  /* background-color: #ffffff !important; */
+  /* color: #555 !important; */
+  -webkit-box-shadow: 0 0 0 1000px #f5f7fa inset !important;
+  -webkit-text-fill-color: #253343 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

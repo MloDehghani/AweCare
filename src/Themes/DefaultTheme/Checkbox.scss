@@ -1,0 +1,9 @@
+.Acord-Checkbox-container {
+  @apply flex gap-x-1;
+}
+.Acord-Checkbox-input {
+  @apply w-4 h-4 cursor-pointer  accent-primary-color;
+}
+.Acord-Checkbox-label {
+  @apply leading-[14.52px] text-[12px] font-[400] text-secondary-color;
+}
