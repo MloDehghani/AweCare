@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { getTokenFromLocalStorage } from "../../Storage/Token";
 import { Flow } from "../../Api";
 import ChatSection from "../../components/ChatSection";
+import { checkBotId } from "../../Api/botId";
 
 
 const suggestions = [
@@ -31,7 +32,7 @@ const suggestions = [
 // ];
 
 const Chat = () => {
-  const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [hideHorizontalSuggestions, setHideHorizontalSuggestions] =
     useState(true);
   const [showTextBox, setShowTextBox] = useState(false);
@@ -67,7 +68,16 @@ const Chat = () => {
       useLegacyResults: false
   });  
   const audioRef = useRef<any>()    
+  const handleKeyPress = (event: any) => {
+      setIsTalking(false)
+      if (event.key === "Enter" && text.length > 0) {
+        sendToApi(text)
+         setShowTextBox(false);
+          setText('') 
+      }
+  };     
   function handleClick() {
+    
     if (showSuggestions)
       setHideHorizontalSuggestions((prevState) => !prevState);
   }
@@ -181,7 +191,14 @@ const Chat = () => {
           navigate('/login');
         }, 200);
       }    
+      checkBotId("e71d7ca511cb462694428833fe8377f9").then((res) => {
+        console.log(res)
+
+        setSuges(res.suggestion_list)
+        setShowSuggestions(true)
+      })
   })
+  const[suges,setSuges] = useState<Array<string>>([])
   return (
     <div className={`${styles.container} hiddenScrollBar`}>
       {!showSuggestions && <ChatSection isLoading={isLoading} chat={chat} />}
@@ -189,7 +206,7 @@ const Chat = () => {
         <div className={styles.suggest}>
           <Suggestions
             onVSelectItem={handleVerticalSelected}
-            suggestions={suggestions}
+            suggestions={suges}
           />
         </div>
       )}
@@ -215,6 +232,7 @@ const Chat = () => {
           <div id="boxInput" placeholder="Ask a question" className={styles.showText}>
             <input
               value={text}
+              onKeyDown={handleKeyPress}
               onChange={(event) => setText(event.target.value)}
               className={styles.input}
             />
@@ -250,6 +268,9 @@ const Chat = () => {
                 onStart={() => {
                   startSpeechToText()
                   // setIsRecording(true);
+                }}
+                onTalkingClik={() => {
+                  setIsTalking(false)
                 }}
                 onStop={() => {
                   stopSpeechToText()

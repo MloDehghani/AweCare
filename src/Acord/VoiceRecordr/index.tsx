@@ -7,6 +7,7 @@ type RecordProps = {
   onStop: () => void;
   isRecording: boolean;
   disabled?: boolean;
+  onTalkingClik?:() => void;
   isTalking: boolean;
   isLoading: boolean;
 };
@@ -19,11 +20,14 @@ const VoiceRecorder: React.FC<RecordProps> = ({
   isTalking,
   isLoading,
   theme,
+  onTalkingClik,
 }) => {
   function toggleButton() {
     if (!isRecording && !isLoading && !disabled && !isTalking) {
       onStart();
-    } else {
+    } else if(isTalking && onTalkingClik){
+      onTalkingClik()
+    }else{
       onStop();
     }
   }
