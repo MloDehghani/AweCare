@@ -1,5 +1,6 @@
 import Button from "../../Acord/Button";
 import TextField from "../../Acord/TextField";
+import jwt_decode from "jwt-decode";
 // import "./login.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -8,6 +9,8 @@ import Auth from "../../Api/Auth";
 import { storeTokenInLocalStorage } from "../../Storage/Token";
 import { useNavigate } from "react-router-dom";
 import {toast } from "react-toastify";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { useCallback, useEffect, useState } from "react";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Please enter a valid email").required("Required"),
@@ -31,6 +34,21 @@ const Login = () => {
       console.log(values);
     },
   });
+  const [loginWidth, setLoginWidth] = useState<number>(200);
+  const handleResize = useCallback(() => {
+    if (document.getElementById("authButton")) {
+      setTimeout(() => {
+        const width: number = document.getElementById("authButton")
+          ?.offsetWidth as number;
+        setLoginWidth(width)  
+      }, 200);
+    }
+  }, []);
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize, false);
+  }, []);  
+
   const submitDisabled = Object.keys(formik.errors).length > 0 || !formik.dirty;
   const navigate = useNavigate();  
   return (
@@ -69,7 +87,7 @@ const Login = () => {
   
           <p className={styles.forget}>Forgot Password?</p>
   
-          <div className={styles.button}>
+          <div id="authButton" className={styles.button}>
             <Button onClick={() => {
               Auth.login({
                 email:formik.values.email,
@@ -94,7 +112,7 @@ const Login = () => {
           <div>or</div> {/* right line */}
           <div></div>
         </div>
-        <div className={styles["google-button"]}>
+        {/* <div className={styles["google-button"]}>
           <Button theme="AweCare-GoogleButton">
             <div className={styles["google-container"]}>
               <img
@@ -104,7 +122,48 @@ const Login = () => {
               <span> Continue with Google</span>
             </div>
           </Button>
-        </div>
+        </div> */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <GoogleOAuthProvider clientId="750278697489-u68emmire3d35234obo1mne9v0eobmsu.apps.googleusercontent.com">
+            <GoogleLogin
+              text="continue_with"
+              shape="square"
+              width={
+                loginWidth+ "px"
+              }
+              theme="outline"
+              onSuccess={(credentialResponse) => {
+                const prof: any = jwt_decode(
+                  credentialResponse.credential
+                    ? credentialResponse?.credential
+                    : ""
+                );
+
+                Auth.login(
+                  {
+                    google_json: prof,
+                  },
+                  (res) => {
+                    if (res.data.access_token) {
+                      setTimeout(() => {
+                        // localStorage.setItem("accessToken", res.access_token);
+                        storeTokenInLocalStorage(res.data.access_token)
+                        navigate("/");                          
+                      }, 200);
+                    }
+                    if(res.data.has_rated ==false){
+                      localStorage.setItem("has_rated","true")
+                    }
+                  }
+                );
+              }}
+              onError={() => {
+                // console.log("Login Failed");
+                toast.error('Login Failed"')
+              }}
+            />
+          </GoogleOAuthProvider>
+        </div>        
         <div className={styles.account}>
           Don't have an account? <a onClick={() => {
             navigate('/register')
