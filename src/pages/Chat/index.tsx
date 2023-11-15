@@ -10,7 +10,7 @@ import styles from "./Chat.module.css";
 import { makeid, useConstructor } from "../../help";
 import { useNavigate } from "react-router-dom";
 import { getTokenFromLocalStorage } from "../../Storage/Token";
-import { Flow } from "../../Api";
+import { Auth, Flow } from "../../Api";
 import ChatSection from "../../components/ChatSection";
 import { checkBotId } from "../../Api/botId";
 
@@ -201,7 +201,16 @@ const Chat = () => {
   const[suges,setSuges] = useState<Array<string>>([])
   return (
     <div className={`${styles.container} hiddenScrollBar`}>
-      {!showSuggestions && <ChatSection isLoading={isLoading} chat={chat} />}
+      <div style={{position:'absolute',display:'flex',justifyContent:'center',width:'100%',top:'16px'}}>
+        <div style={{width:'90%',display:'flex',paddingBottom:'8px',backgroundColor:'white',justifyContent:'end'}}>
+          <img onClick={() => {
+            Auth.logout()
+            localStorage.clear()
+            navigate('/login')
+          }} className="cursor-pointer" style={{width:24}} src="./logOut.svg" alt="" />
+        </div>
+      </div>
+      {!showSuggestions && <ChatSection  isLoading={isLoading} chat={chat} />}
       {showSuggestions && (
         <div className={styles.suggest}>
           <Suggestions
