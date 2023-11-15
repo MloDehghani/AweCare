@@ -34,7 +34,7 @@
   @apply absolute w-[90%] bottom-10 h-[50px] flex justify-between items-center;
 }
 .voiceRecorder {
-  @apply z-[101] pl-[18px];
+  @apply z-[101] ;
 }
 .keyboardButton {
   @apply w-[56px] h-[56px]  border-[1px] border-white flex justify-center cursor-pointer items-center rounded-full;

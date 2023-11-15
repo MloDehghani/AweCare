@@ -55,7 +55,9 @@ function ChatSection(props:ChatSectionProp) {
           <div className={styles.firstLevelofAi} style={{width:'100%'}}>
             <div className={styles.secondLevelofAi}>
               <div className={styles.thirdLevelofAi}>
-                <div className={styles.aiIcon} />
+                <div className={styles.aiIcon} >
+                    <img src="./Acord/aiIcon.svg" className={styles.aiIcon} alt="" />
+                </div>
               </div>
               
             <div className="w-full ml-3 h-11 rounded-[8px] flex justify-start pl-3 items-center bg-[#F4F5FF]">

@@ -242,6 +242,7 @@ const Chat = () => {
             <input
               value={text}
               onKeyDown={handleKeyPress}
+              autoFocus
               onChange={(event) => setText(event.target.value)}
               className={styles.input}
             />
