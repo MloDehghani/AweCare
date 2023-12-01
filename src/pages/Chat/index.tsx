@@ -1,38 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef } from "react";
-import { Suggestions, VoiceRecorder } from "../../Acord";
-// import HorizontalSuggestions from "../../Acord/HorizontalSuggestions";
+import {
+  Button, 
+  ChatSection,
+  ChatTextInput,
+  Setting,
+  Suggestions,
+  VoiceRecorder 
+} from "../../Acord";
 import useSpeechToText from "react-hook-speech-to-text";
-import Button from "../../Acord/Button";
 import styles from "./Chat.module.css";
 // import ChatSection from "../../components/ChatSection";
 import { makeid, useConstructor } from "../../help";
 import { useNavigate } from "react-router-dom";
 import { getTokenFromLocalStorage } from "../../Storage/Token";
-import { Auth, Flow } from "../../Api";
-import ChatSection from "../../components/ChatSection";
-import { checkBotId } from "../../Api/botId";
-
-
-// const suggestions = [
-//   " When should I visit the doctor for a check-up?",
-
-//   "What points should I observe before surgery",
-
-//   "How long is the recovery period after surgery ",
-// ];
-
-// const hSuggestions = [
-//   " What should I do in thiscase?",
-
-//   "I need more information",
-
-//   "Tell me more about surgery",
-// ];
+import { Flow, checkBotId } from "../../Api";
 
 const Chat = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const textInputRef = useRef<HTMLInputElement>(null);
+  const settingRef = useRef<HTMLDivElement>(null);
   const [hideHorizontalSuggestions, setHideHorizontalSuggestions] =
     useState(true);
   const [showTextBox, setShowTextBox] = useState(false);
@@ -114,23 +102,23 @@ const Chat = () => {
                 : 1,
           }
         ,(res) => {
-          // console.log(res)
+          console.log(res)
           const responseApi = {
             type: 'text',
-            message: res.answer.answer,
+            message: res.data.answer.answer,
             from: 'admin',
-            video: res.answer.video_file,
-            audio: res.answer.audio_file,
+            video: res.data.answer.video_file,
+            audio: res.data.answer.audio_file,
             question: '',
-            currentconverationid: res.currentconverationid,
+            currentconverationid: res.data.currentconverationid,
             weekDay: new Date().getDay(),
             month: new Date().getMonth(),
             day: new Date().getDate(),
             aisles:
-              res.answer.suggestion_list !== 'NA'
-                ? res.answer.suggestion_list
+              res.data.answer.suggestion_list !== 'NA'
+                ? res.data.answer.suggestion_list
                 : [],
-            instanceid: res.instanceid,
+            instanceid: res.data.instanceid,
             like:null,
             timestamp:timeStamp
             // aisles:JSON.parse(res.suggestion_list),
@@ -138,8 +126,8 @@ const Chat = () => {
           // chat.push(responseApi);
           setChat([...chat,responseApi]);   
           setAudioUrl(responseApi.audio)
-          setIsTalking(true);            
-          setIsLoading(false)           
+          setIsTalking(true);        
+          setIsLoading(false)   
         }
     )
   }
@@ -199,9 +187,23 @@ const Chat = () => {
       })
   })
   const[suges,setSuges] = useState<Array<string>>([])
+  const [boxHeight, setBoxHeight] = useState(window.innerHeight);
+  const [showSetting, setShowSetting] = useState(false);
+  const handleResize = () => {
+    setBoxHeight(window.innerHeight);
+  };
+  useEffect(() => {
+    setBoxHeight(window.innerHeight);
+    window.addEventListener("resize", handleResize, false);
+  }, []);  
   return (
-    <div className={`${styles.container} hiddenScrollBar`}>
-      <div style={{position:'absolute',display:'flex',justifyContent:'center',width:'100%',top:'16px'}}>
+    <div  style={{
+        backgroundColor: "white",
+        position: "relative",
+        height: boxHeight,
+        overflowY: "scroll",
+      }} className={`${styles.container} hiddenScrollBar`}>
+      {/* <div style={{position:'absolute',display:'flex',justifyContent:'center',width:'100%',top:'16px'}}>
         <div style={{width:'90%',display:'flex',paddingBottom:'8px',backgroundColor:'white',justifyContent:'end'}}>
           <img onClick={() => {
             Auth.logout()
@@ -209,14 +211,34 @@ const Chat = () => {
             navigate('/login')
           }} className="cursor-pointer" style={{width:24}} src="./logOut.svg" alt="" />
         </div>
-      </div>
+      </div> */}
+      <div>
+        {showSetting && (
+          <Setting
+            settingRef={settingRef}
+            onChangeLanguage={() => {}}
+            onClearHistory={() => {}}
+            onLogout={() => {}}
+          />
+        )}
+        {/* <div className="Acord-Setting-logoutIcon " /> */}
+        <div
+          onClick={() => {
+            setShowSetting((prev) => !prev);
+          }}
+          className={styles.settingIcon}
+        />
+      </div>      
       {!showSuggestions && <ChatSection  isLoading={isLoading} chat={chat} />}
       {showSuggestions && (
         <div className={styles.suggest}>
-          <Suggestions
-            onVSelectItem={handleVerticalSelected}
-            suggestions={suges}
-          />
+          <div className={styles.suggestDiv}>
+            <div className={styles.avatIcon} />
+            <Suggestions
+              onVSelectItem={handleVerticalSelected}
+              suggestions={suges}
+            />
+          </div>
         </div>
       )}
       <div className={styles.startTextContainer}>
@@ -238,36 +260,34 @@ const Chat = () => {
 
       <div className={styles.buttonsContainer}>
         {showTextBox ? (
-          <div id="boxInput" placeholder="Ask a question" className={styles.showText}>
-            <input
-              value={text}
-              onKeyDown={handleKeyPress}
-              autoFocus
-              onChange={(event) => setText(event.target.value)}
-              className={styles.input}
-            />
-            {text.length > 0 &&  !isLoading ?
-              // <div
-              //   onClick={() => {
-              //     setShowTextBox(false);
-              //     sendToApi(text);
-              //     setText("");
-              //   }}
-              //   className={styles.sendIcon}
-              // />
-              <img className={styles.sendIcon} onClick={() => {
+          <div className="w-[-webkit-fill-available] flex justify-center absolute bottom-6">
+            <div className="flex w-[90%] justify-between items-center ">
+              <div className="relative w-[-webkit-fill-available]">
+                <ChatTextInput
+                  send={sendToApi}
+                  isLoading={false}
+                  onKeyDown={handleKeyPress}
+                  textInputRef={textInputRef}
+                  text={text}
+                  setText={setText}
+                  setShowTextBox={setShowTextBox}
+                />
+              </div>
+              <div
+                onClick={() => {
                   setShowTextBox(false);
-                  sendToApi(text);
-                  setText("");                
-              }} src="./Acord/Send.svg" alt="" />
-            :
-            undefined}
+                }}
+                className="w-9 h-9 cursor-pointer rounded-full flex justify-center ml-2 items-center bg-primary-color"
+              >
+                <img className="w-[10px]" src="./Acord/Record.svg" alt="" />
+              </div>
+            </div>
           </div>
         ) : (
           <div className={styles.twoButtonsContainer}>
             <Button theme="Awecare-RoundedButton" onClick={handleClick}>
-              {/* <div className={styles.horizontalSuggestionIcon} /> */}
-              <img src="./Acord/hSuggest.svg" />
+              <div className={styles.horizontalSuggestionIcon} />
+              {/* <img src="./Acord/hSuggest.svg" /> */}
             </Button>
             <div className={styles.voiceRecorder}>
               <VoiceRecorder
@@ -279,7 +299,7 @@ const Chat = () => {
                   startSpeechToText()
                   // setIsRecording(true);
                 }}
-                onTalkingClik={() => {
+                onTalkingClick={() => {
                   setIsTalking(false)
                 }}
                 onStop={() => {
@@ -296,8 +316,8 @@ const Chat = () => {
                 document.addEventListener('click',closeTextBox)
               }}
             >
-              {/* <div className={styles.keyboardIcon} /> */}
-              <img src="./Acord/keyboard3.svg" />
+              <div className={styles.keyboardIcon} />
+              {/* <img src="./Acord/keyboard3.svg" /> */}
             </Button>
           </div>
         )}

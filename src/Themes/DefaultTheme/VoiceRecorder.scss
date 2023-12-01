@@ -1,11 +1,19 @@
 .Acord-VoiceRecorder-WaveBox {
   @apply z-[-1] top-0 absolute block opacity-50 w-[var(--Acord-voiceRecorder-width)] h-[var(--Acord-voiceRecorder-width)] rounded-full bg-primary-color;
 }
+
 .Acord-VoiceRecorder-container {
   @apply relative w-[var(--Acord-voiceRecorder-width)] h-[var(--Acord-voiceRecorder-width)] cursor-pointer rounded-full bg-primary-color flex justify-center items-center;
 }
+.Acord-VoiceRecorder-containerBox {
+  box-shadow: 0px 44px 66px 0px rgba(176, 195, 210, 0.7278);
+}
+
 .Acord-VoiceRecorder-icon {
   @apply bg-[url('./Acord/Record.svg')] w-[14px] h-[23px];
+}
+.Acord-VoiceRecorder-stop {
+  @apply bg-[url('./Acord/stop.svg')] w-[36px] h-[17.1px];
 }
 .Acord-VoiceRecorder-Wave1 {
   animation: waves 2.5s linear 0.1s infinite;

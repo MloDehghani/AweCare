@@ -1,6 +1,6 @@
 import Button from "../../Acord/Button";
 import TextField from "../../Acord/TextField";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 // import "./login.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -133,7 +133,7 @@ const Login = () => {
               }
               theme="outline"
               onSuccess={(credentialResponse) => {
-                const prof: any = jwt_decode(
+                const prof: unknown = jwtDecode(
                   credentialResponse.credential
                     ? credentialResponse?.credential
                     : ""

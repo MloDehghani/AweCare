@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { toast } from 'react-toastify';
 import Api from './Api';
+import { toast } from 'react-toastify';
 
 class Auth extends Api {
     static login(data: any,submit:(res:any) => void) {

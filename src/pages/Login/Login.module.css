@@ -1,5 +1,5 @@
 .section {
-  @apply px-6 flex flex-col ;
+  @apply h-screen px-6 flex flex-col;
 }
 
 .title {
