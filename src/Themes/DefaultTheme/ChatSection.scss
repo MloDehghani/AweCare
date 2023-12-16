@@ -1,0 +1,36 @@
+.Acord-ChatSection-container {
+  @apply pt-10  h-[80vh] flex justify-center w-[100%] overflow-y-scroll;
+}
+.Acord-ChatSection-aiIcon {
+  @apply bg-[url('./src/assets/Acord/aiIcon.svg')] w-[33px]  h-[32px];
+}
+.Acord-ChatSection-secondDiv {
+  @apply w-[90%];
+}
+.Acord-ChatSection-secondLevelofUser {
+  @apply ml-auto w-fit mb-5;
+}
+.Acord-ChatSection-lastLevelofUser {
+  @apply rounded-[8px] px-4 py-3 bg-[#E6F9F4]  text-secondary-color/80 leading-[17px] text-[14px] font-[400];
+}
+.Acord-ChatSection-firstLevelofAi {
+  @apply w-fit mb-5;
+}
+.Acord-ChatSection-firstLevelofAiLoader {
+  @apply w-[100%] mb-5;
+}
+.Acord-ChatSection-secondLevelofAi {
+  @apply flex;
+}
+.Acord-ChatSection-thirdLevelofAi {
+  @apply pr-3;
+}
+.Acord-ChatSection-lastLevelofAi {
+  @apply rounded-[8px] px-4 py-3 bg-[#F4F5FF]  text-secondary-color/80 leading-[17px] text-[14px] font-[400];
+}
+.Acord-ChatSection-loader {
+  @apply w-full flex items-center justify-between  h-11 rounded-[8px]  px-3  bg-[#F4F5FF];
+}
+.Acord-ChatSection-stop {
+  @apply text-primary-color text-[14px] leading-[17px] font-[400] tracking-wide cursor-pointer;
+}

@@ -1,0 +1,27 @@
+.Acord-ChatInformation-firstContainer {
+  @apply py-4 px-8;
+}
+.Acord-ChatInformation-container {
+  @apply mx-auto px-4 rounded-lg  bg-[#F4F5FF]/50;
+}
+.Acord-ChatInformation-secondDiv {
+  @apply flex flex-col  justify-center items-center rounded-lg  pt-6;
+}
+.Acord-ChatInformation-thirdDiv {
+  @apply ml-auto pr-8 cursor-pointer;
+}
+
+.Acord-ChatInformation-crossIcon {
+  @apply bg-[url('./src/assets/Acord/cross.svg')] w-[14px]   h-[14px];
+}
+
+.Acord-ChatInformation-forthDiv {
+  @apply flex  justify-between w-full items-center p-4 m-4;
+}
+.Acord-ChatInformation-fifthDiv {
+  @apply leading-[20.7px] text-[14px] font-[400] text-secondary-color;
+}
+
+.Acord-ChatInformation-image {
+  @apply w-32 h-32 rounded-[4px];
+}

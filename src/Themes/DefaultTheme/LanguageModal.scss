@@ -1,0 +1,39 @@
+.Acord-LanguageModal-container {
+  @apply fixed inset-0 z-[110] overflow-y-auto;
+}
+.Acord-LanguageModal-secondDiv {
+  @apply flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
+}
+.Acord-LanguageModal-thirdDiv {
+  @apply fixed inset-0 transition-opacity;
+}
+.Acord-LanguageModal-overlay {
+  @apply absolute inset-0 bg-black opacity-50;
+}
+.Acord-LanguageModal-hiddenLayer {
+  @apply hidden sm:inline-block sm:align-middle sm:h-screen;
+}
+.Acord-LanguageModal-fourthDiv {
+  @apply inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-fit sm:w-full;
+}
+.Acord-LanguageModal-fifthDiv {
+  @apply bg-white px-4 pt-5 pb-4;
+}
+.Acord-LanguageModal-sixthDiv {
+  @apply pt-2 pb-4 space-y-3;
+}
+.Acord-LanguageModal-textContainer {
+  @apply mt-3 text-center space-y-2;
+}
+.Acord-LanguageModal-firstText {
+  @apply text-[16px] leading-[25px] font-[400] text-secondary-color;
+}
+.Acord-LanguageModal-secondText {
+  @apply text-[12px] leading-[20px] font-[400] text-secondary-color;
+}
+.Acord-LanguageModal-confirmContainer {
+  @apply flex  space-x-[30px] text-primary-color text-[16px] leading-[24px] font-[500] justify-center;
+}
+.Acord-LanguageModal-confirmText {
+  @apply cursor-pointer;
+}

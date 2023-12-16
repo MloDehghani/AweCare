@@ -1,0 +1,39 @@
+.Acord-LogoutModal-container {
+  @apply fixed inset-0 z-[110] overflow-y-auto;
+}
+.Acord-LogoutModal-secondDiv {
+  @apply flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
+}
+.Acord-LogoutModal-thirdDiv {
+  @apply fixed inset-0 transition-opacity;
+}
+.Acord-LogoutModal-overlay {
+  @apply absolute inset-0 bg-black opacity-50;
+}
+.Acord-LogoutModal-hiddenLayer {
+  @apply hidden sm:inline-block sm:align-middle sm:h-screen;
+}
+.Acord-LogoutModal-fourthDiv {
+  @apply inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-fit sm:w-full;
+}
+.Acord-LogoutModal-fifthDiv {
+  @apply bg-white px-10 pt-5 pb-4;
+}
+.Acord-LogoutModal-sixthDiv {
+  @apply pt-1 pb-2 space-y-6;
+}
+.Acord-LogoutModal-textContainer {
+  @apply mt-3 text-center space-y-2;
+}
+.Acord-LogoutModal-firstText {
+  @apply text-[16px] leading-[25px] font-[400] text-secondary-color;
+}
+.Acord-LogoutModal-secondText {
+  @apply text-[12px] leading-[20px] font-[400] text-secondary-color;
+}
+.Acord-LogoutModal-confirmContainer {
+  @apply flex  space-x-[30px] text-primary-color text-[16px] leading-[24px] font-[500] justify-center;
+}
+.Acord-LogoutModal-confirmText {
+  @apply cursor-pointer;
+}

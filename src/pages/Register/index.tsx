@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { storeTokenInLocalStorage } from "../../Storage/Token";
 import { toast } from "react-toastify";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { useCallback, useEffect, useState } from "react";
 
 const validationSchema = Yup.object().shape({
@@ -167,7 +167,7 @@ const Register = () => {
               }
               theme="outline"
               onSuccess={(credentialResponse) => {
-                const prof: any = jwt_decode(
+                const prof: unknown = jwtDecode(
                   credentialResponse.credential
                     ? credentialResponse?.credential
                     : ""

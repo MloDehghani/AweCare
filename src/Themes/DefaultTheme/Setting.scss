@@ -1,0 +1,83 @@
+.Acord-Setting-container {
+  @apply top-6 right-40 absolute;
+}
+.Acord-Setting-secondDiv {
+  @apply relative  z-20;
+}
+.Acord-Setting-thirdDiv {
+  @apply bg-white w-[150px] max-h-[80px]   z-10 border-gray-100  absolute rounded-[5px] px-3 pt-2 pb-2  shadow-xl mt-[24px];
+}
+.Acord-Setting-fourthDiv {
+  @apply flex flex-col;
+}
+.Acord-Setting-fifthDiv {
+  @apply flex items-center gap-x-2 mb-2;
+}
+.Acord-Setting-language {
+  @apply leading-[14.5px]   text-[12px] font-[400] cursor-pointer whitespace-nowrap;
+}
+.Acord-Setting-clicked {
+  @apply text-primary-color;
+}
+.Acord-Setting-unClicked {
+  @apply text-secondary-color;
+}
+
+.Acord-Setting-history {
+  @apply leading-[14.5px]  text-[12px] font-[400]   tracking-wide  whitespace-nowrap cursor-pointer;
+}
+.Acord-Setting-sixDiv {
+  @apply flex items-center gap-x-2;
+}
+.Acord-Setting-logout {
+  @apply leading-[14.5px]  text-[12px] font-[400]    tracking-wide whitespace-nowrap cursor-pointer;
+}
+
+.Acord-Setting-translateIcon {
+  @apply w-[16px] cursor-pointer bg-[#253343]  h-[16px];
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("./src/assets/Acord/translate.svg");
+}
+.Acord-Setting-icons-selected {
+  @apply bg-primary-color #{!important};
+}
+
+.Acord-Setting-alertIcon {
+  @apply bg-[url('./Acord/alert.svg')] w-[16px] cursor-pointer  h-[16px];
+}
+
+.Acord-Setting-languageListContainer {
+  @apply top-0 right-40 pl-2 z-20 rounded-[5px] leading-[14.5px]  text-[12px] font-[400]  text-secondary-color tracking-wide bg-white py-1 absolute shadow-xl w-[75px] max-h-fit;
+}
+.Acord-Setting-languageList {
+  @apply space-y-2;
+}
+.Acord-Setting-listItem {
+  @apply cursor-pointer;
+}
+.Acord-Setting-listItemIcon {
+  @apply ml-2;
+}
+.Acord-Setting-listItemSure {
+  @apply text-[#DC3545];
+}
+
+.Acord-Setting-historyIcon {
+  @apply w-4 cursor-pointer bg-[#253343]  h-4;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("./src/assets/Acord/broom.svg");
+}
+.Acord-Setting-logoutIcon {
+  @apply w-4 cursor-pointer bg-[#253343]  h-4;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("./src/assets/Acord/logout.svg");
+}

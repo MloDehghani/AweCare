@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import WaveVoice from "../WaveVoice";
 import { BeatLoader } from "react-spinners";
 
@@ -5,9 +7,9 @@ type RecordProps = {
   theme?: string;
   onStart: () => void;
   onStop: () => void;
-  isRecording: boolean;
+  onTalkingClick: () => void;
+  isRecording?: boolean;
   disabled?: boolean;
-  onTalkingClik?:() => void;
   isTalking: boolean;
   isLoading: boolean;
 };
@@ -15,36 +17,48 @@ type RecordProps = {
 const VoiceRecorder: React.FC<RecordProps> = ({
   onStart,
   onStop,
+  onTalkingClick,
   isRecording,
   disabled,
   isTalking,
   isLoading,
   theme,
-  onTalkingClik,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   function toggleButton() {
     if (!isRecording && !isLoading && !disabled && !isTalking) {
       onStart();
-    } else if(isTalking && onTalkingClik){
-      onTalkingClik()
-    }else{
+    } else {
       onStop();
     }
+    if (isTalking) onTalkingClick();
   }
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
 
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
   return (
     <div
       aria-disabled={disabled}
       onClick={toggleButton}
-      className={`${theme}-VoiceRecorder-container`}
+      className={`${theme}-VoiceRecorder-container ${theme}-VoiceRecorder-containerBox `}
     >
       {isTalking ? (
-        <WaveVoice></WaveVoice>
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          {isHovered ? (
+            <div className={`${theme}-VoiceRecorder-stop`} />
+          ) : (
+            <WaveVoice></WaveVoice>
+          )}
+        </div>
       ) : isLoading ? (
         <BeatLoader color="white" size={8}></BeatLoader>
       ) : (
-        // <div className={`${theme}-VoiceRecorder-icon`} />
-        <img src="./Acord/Record.svg" />
+        <div className={`${theme}-VoiceRecorder-icon`} />
       )}
       {isRecording ? (
         <>
