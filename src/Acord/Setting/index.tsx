@@ -1,28 +1,31 @@
 import { useState, useEffect } from "react";
-import {
-  HistorySvg,
-  LanguageModal,
-  LanguageSvg,
-  LogoutModal,
-  LogoutSvg,
-} from "..";
+import { LanguageModal, LogoutModal } from "..";
 
+// const LanguagesList = [
+//   "English",
+//   "German",
+//   "French",
+//   "Persian",
+//   "Chinese",
+//   "Arabic",
+// ];
 const LanguagesList = [
-  "English",
-  "German",
-  "French",
-  "Persian",
-  "Chinese",
-  "Arabic",
+  { lan: "English", code: "en-US" },
+  { lan: "German", code: "de" },
+  { lan: "French", code: "fr" },
+  { lan: "Persian", code: "fa" },
+  { lan: "Turkish", code: "tr-TR" },
+  { lan: "Chinese", code: "zh-cn" },
+  { lan: "Arabic", code: "ar-AE" },
 ];
-
 type SettingProps = {
   theme?: string;
   settingRef: React.RefObject<HTMLDivElement>;
-  onChangeLanguage: (selectedLanguage: string) => void; // Updated onChangeLanguage prop
-
+  // onChangeLanguage: (selectedLanguage: string) => void; // Updated onChangeLanguage prop
+  onChangeLanguage: (selectedLanguage: { lan: string; code: string }) => void;
   onClearHistory: () => void;
   onLogout: () => void;
+  onStorageLanguage: (selectedLanguage: { lan: string; code: string }) => void;
 };
 
 const Setting: React.FC<SettingProps> = ({
@@ -31,6 +34,7 @@ const Setting: React.FC<SettingProps> = ({
   onChangeLanguage,
   onClearHistory,
   onLogout,
+  onStorageLanguage,
 }) => {
   const [showLanguageList, setShowLanguageList] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<string>("");
@@ -88,19 +92,94 @@ const Setting: React.FC<SettingProps> = ({
     onLogout();
   }
 
+  // useEffect(() => {
+  //   // Load selected language from storage when component mounts
+  //   const storedLanguage = localStorage.getItem("selectedLanguage");
+  //   if (storedLanguage && LanguagesList.includes(storedLanguage)) {
+  //     setSelectedLanguage(storedLanguage);
+  //     setNewLanguage(storedLanguage); // Set newLanguage here
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   // Load selected language from storage when component mounts
+  //   const storedLanguage = localStorage.getItem("selectedLanguage");
+  //   if (
+  //     storedLanguage &&
+  //     LanguagesList.some((item) => item.lan === storedLanguage)
+  //   ) {
+  //     setSelectedLanguage(storedLanguage);
+  //     setNewLanguage(storedLanguage); // Set newLanguage here
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   // Load selected language from storage when component mounts
+  //   const storedLanguage = localStorage.getItem("selectedLanguage");
+  //   if (
+  //     storedLanguage &&
+  //     LanguagesList.some((item) => item.lan === storedLanguage)
+  //   ) {
+  //     setSelectedLanguage(storedLanguage);
+  //     setNewLanguage(storedLanguage); // Set newLanguage here
+  //   } else {
+  //     // If no language is stored in localStorage, set the default language to English
+  //     const defaultLanguage = LanguagesList.find(
+  //       (item) => item.lan === "English"
+  //     );
+  //     if (defaultLanguage) {
+  //       setSelectedLanguage(defaultLanguage.lan);
+  //       setNewLanguage(defaultLanguage.lan);
+  //       localStorage.setItem("selectedLanguage", defaultLanguage.lan);
+  //     }
+  //   }
+  // }, []);
   useEffect(() => {
-    // Load selected language from storage when component mounts
     const storedLanguage = localStorage.getItem("selectedLanguage");
-    if (storedLanguage && LanguagesList.includes(storedLanguage)) {
-      setSelectedLanguage(storedLanguage);
-      setNewLanguage(storedLanguage); // Set newLanguage here
+
+    if (storedLanguage) {
+      const parsedLanguage = JSON.parse(storedLanguage);
+      setSelectedLanguage(parsedLanguage.lan);
+      setNewLanguage(parsedLanguage.lan);
+    } else {
+      // If no language is stored in localStorage, set the default language to English
+      const defaultLanguage = LanguagesList.find(
+        (item) => item.lan === "English"
+      );
+      if (defaultLanguage) {
+        setSelectedLanguage(defaultLanguage.lan);
+        setNewLanguage(defaultLanguage.lan);
+
+        const defaultLanguageToStore = JSON.stringify(defaultLanguage);
+        localStorage.setItem("selectedLanguage", defaultLanguageToStore);
+      }
     }
   }, []);
+
+  // function handleChangeLanguage() {
+  //   setNewLanguage(selectedLanguage);
+  //   // onChangeLanguage(selectedLanguage);
+  //   onChangeLanguage({
+  //     lan: selectedLanguage,
+  //     code:
+  //       LanguagesList.find((item) => item.lan === selectedLanguage)?.code || "",
+  //   });
+
+  //   localStorage.setItem("selectedLanguage", selectedLanguage);
+  //   setShowLanguageModal(false);
+  //   // setShowLanguageList(false);
+  // }
   function handleChangeLanguage() {
-    setNewLanguage(selectedLanguage);
-    onChangeLanguage(selectedLanguage);
-    localStorage.setItem("selectedLanguage", selectedLanguage);
-    setShowLanguageModal(false);
+    const selectedLanguageObj = LanguagesList.find(
+      (item) => item.lan === selectedLanguage
+    );
+
+    if (selectedLanguageObj) {
+      setNewLanguage(selectedLanguage);
+      onChangeLanguage(selectedLanguageObj);
+
+      const languageToStore = JSON.stringify(selectedLanguageObj);
+      localStorage.setItem("selectedLanguage", languageToStore);
+      setShowLanguageModal(false);
+    }
   }
 
   function handleLanguageClick(item: string) {
@@ -109,6 +188,17 @@ const Setting: React.FC<SettingProps> = ({
     setShowLanguageModal(true);
     // localStorage.setItem("selectedLanguage", item);
   }
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("selectedLanguage");
+    console.log("storedLangCode", storedLanguage);
+    if (storedLanguage) {
+      // setSelectedlangCode(JSON.parse(storedLanguage));
+      // // If needed, perform additional actions based on the fetched data
+      // getLangSuggestions(JSON.parse(storedLanguage).lan);
+      onStorageLanguage(JSON.parse(storedLanguage));
+    }
+  }, []);
   return (
     <div ref={settingRef} className={`${theme}-Setting-container`}>
       <LanguageModal
@@ -125,12 +215,16 @@ const Setting: React.FC<SettingProps> = ({
         <div className={`${theme}-Setting-thirdDiv`}>
           <div className={`${theme}-Setting-fourthDiv`}>
             <div className={`${theme}-Setting-fifthDiv`}>
-              {/* <div className={`${theme}-Setting-translateIcon `} /> */}
-              {languageClicked ? (
+              <div
+                className={`${theme}-Setting-translateIcon  ${
+                  languageClicked ? `Acord-Setting-icons-selected` : undefined
+                }`}
+              />
+              {/* {languageClicked ? (
                 <LanguageSvg color="#0CBC84" />
               ) : (
                 <LanguageSvg color="#253343" />
-              )}
+              )} */}
               <p
                 onClick={handleLanguage}
                 className={` ${theme}-Setting-language  ${
@@ -147,12 +241,12 @@ const Setting: React.FC<SettingProps> = ({
                     {LanguagesList.map((item, index) => (
                       <li
                         className={`${theme}-Setting-listItem `}
-                        onClick={() => handleLanguageClick(item)}
-                        value={item}
+                        onClick={() => handleLanguageClick(item.lan)}
+                        value={item.lan}
                         key={index}
                       >
-                        {item}
-                        {newLanguage === item && (
+                        {item.lan}
+                        {newLanguage === item.lan && (
                           <span className={`${theme}-Setting-listItemIcon `}>
                             &#10003;
                           </span>
@@ -164,13 +258,24 @@ const Setting: React.FC<SettingProps> = ({
               )}
             </div>
             <div className={`${theme}-Setting-fifthDiv`}>
-              {confirmClearHistory ? (
-                <div className={`${theme}-Setting-alertIcon `} />
-              ) : clearHistoryClicked ? (
-                <HistorySvg color="#0CBC84" />
-              ) : (
-                <HistorySvg color="#253343" />
-              )}
+              {
+                confirmClearHistory ? (
+                  <div className={`${theme}-Setting-alertIcon `} />
+                ) : (
+                  <div
+                    className={`${theme}-Setting-historyIcon  ${
+                      clearHistoryClicked
+                        ? `Acord-Setting-icons-selected`
+                        : undefined
+                    }`}
+                  />
+                )
+                // clearHistoryClicked ? (
+                //   <HistorySvg color="#0CBC84" />
+                // ) : (
+                //   <HistorySvg color="#253343" />
+                // )
+              }
 
               <p
                 onClick={handleClearHistory}
@@ -188,11 +293,16 @@ const Setting: React.FC<SettingProps> = ({
               </p>
             </div>
             <div className={`${theme}-Setting-sixDiv `}>
-              {logoutClicked ? (
+              <div
+                className={`${theme}-Setting-logoutIcon  ${
+                  logoutClicked ? `Acord-Setting-icons-selected` : undefined
+                }`}
+              />
+              {/* {logoutClicked ? (
                 <LogoutSvg color="#0CBC84" />
               ) : (
                 <LogoutSvg color="#253343" />
-              )}
+              )} */}
               <p
                 onClick={handleLogoutClick}
                 className={`${theme}-Setting-logout ${

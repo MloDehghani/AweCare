@@ -2,17 +2,18 @@
   @apply h-[100%] bg-white    overflow-y-scroll;
 }
 .avatIcon {
-  @apply bg-[url("./Acord/avat.svg")] w-[228px]  h-[227px];
+  @apply bg-[url("./src/assets/Acord/avat.svg")] w-[228px]  h-[227px];
 }
 .suggest {
-  position: absolute;
+  @apply w-[-webkit-fill-available] absolute flex top-[50px] items-start justify-center z-[11]
+  /* position: absolute;
   width: -webkit-fill-available;
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   top: 50px;
   justify-content: center;
-  z-index: 50;
+  z-index: 11; */;
 }
 .suggestDiv {
   @apply flex flex-col items-center space-y-2;
@@ -49,14 +50,27 @@
   @apply w-[56px] h-[56px]  border-[1px] border-white flex justify-center cursor-pointer items-center rounded-full;
 }
 .horizontalSuggestionIcon {
-  @apply bg-[url('./Acord/hSuggest.svg')] w-[25px]  h-[23px];
+  @apply bg-[url('./src/assets/Acord/hSuggest.svg')] w-[25px]  h-[23px];
 }
 .keyboardIcon {
-  @apply bg-[url('./Acord/keyboard3.svg')] w-[25px]  h-[23px];
+  @apply bg-[url('./src/assets/Acord/keyboard3.svg')] w-[25px]  h-[23px];
 }
 .sendIcon {
-  @apply bg-[url('./Acord/Send.svg')] w-[25px]  h-[23px] absolute z-[20] right-[10px];
+  @apply bg-[url('./src/assets/Acord/Send.svg')] w-[25px]  h-[23px] absolute z-[20] right-[10px];
 }
 .settingIcon {
-  @apply bg-[url('./Acord/setting.svg')] w-[25px]   h-[25px]  z-[20]  absolute top-4 right-4 cursor-pointer;
+  /* @apply bg-primary-color w-[25px] h-[25px] bg-[url("./src/assets/Acord/setting.svg")] cursor-pointer z-20 top-4 right-4 absolute; */
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 20;
+  background-color: #0cbc84;
+  mask-position: center;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  mask-image: url("./src/assets/Acord/setting.svg");
 }

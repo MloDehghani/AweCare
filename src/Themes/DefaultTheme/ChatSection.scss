@@ -2,7 +2,7 @@
   @apply pt-10  h-[80vh] flex justify-center w-[100%] overflow-y-scroll;
 }
 .Acord-ChatSection-aiIcon {
-  @apply bg-[url('./Acord/aiIcon.svg')] w-[33px]  h-[32px];
+  @apply bg-[url('./src/assets/Acord/aiIcon.svg')] w-[33px]  h-[32px];
 }
 .Acord-ChatSection-secondDiv {
   @apply w-[90%];
@@ -29,5 +29,8 @@
   @apply rounded-[8px] px-4 py-3 bg-[#F4F5FF]  text-secondary-color/80 leading-[17px] text-[14px] font-[400];
 }
 .Acord-ChatSection-loader {
-  @apply w-full  h-11 rounded-[8px] flex justify-start pl-3 items-center bg-[#F4F5FF];
+  @apply w-full flex items-center justify-between  h-11 rounded-[8px]  px-3  bg-[#F4F5FF];
+}
+.Acord-ChatSection-stop {
+  @apply text-primary-color text-[14px] leading-[17px] font-[400] tracking-wide cursor-pointer;
 }

@@ -10,10 +10,10 @@
 }
 
 .Acord-VoiceRecorder-icon {
-  @apply bg-[url('./Acord/Record.svg')] w-[14px] h-[23px];
+  @apply bg-[url('./src/assets/Acord/Record.svg')] w-[14px] h-[23px];
 }
 .Acord-VoiceRecorder-stop {
-  @apply bg-[url('./Acord/stop.svg')] w-[36px] h-[17.1px];
+  @apply bg-[url('./src/assets/Acord/stop.svg')] w-[36px] h-[17.1px];
 }
 .Acord-VoiceRecorder-Wave1 {
   animation: waves 2.5s linear 0.1s infinite;

@@ -1,5 +1,5 @@
 .Acord-HorizontalSuggestions-list {
-  @apply flex  overflow-x-auto pb-[1px] my-2 w-full;
+  @apply flex absolute bottom-[85px] overflow-x-auto pb-[1px] my-2 w-[90%];
 }
 .Acord-HorizontalSuggestions-listItem {
   @apply pr-2;

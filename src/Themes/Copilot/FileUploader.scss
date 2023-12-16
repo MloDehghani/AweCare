@@ -1,0 +1,18 @@
+.Copilot-FileUploader-container{
+    @apply bg-white w-[540px] h-[620px] rounded-[16px] shadow-lg pt-[30px]
+}
+.Copilot-FileUploader-title{
+    @apply text-[22px] font-semibold text-center text-[#0F0F0F]
+}
+.Copilot-FileUploader-icon{
+    @apply w-[67px] h-[60px] bg-black bg-[#3c3744] justify-self-center mb-[20px];
+     mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-image: url('./src/assets/Acord/Uploadicon.svg');
+}
+
+.Copilot-FileUploader-uploadBox-fileExist {
+    @apply h-[202px]
+}

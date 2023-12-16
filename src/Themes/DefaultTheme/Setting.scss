@@ -34,19 +34,19 @@
 }
 
 .Acord-Setting-translateIcon {
-  @apply bg-[url('./Acord/translate.svg')] w-[16px] cursor-pointer  h-[16px];
+  @apply w-[16px] cursor-pointer bg-[#253343]  h-[16px];
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("./src/assets/Acord/translate.svg");
 }
-.Acord-Setting-broomIcon {
-  @apply bg-[url('./Acord/broom.svg')] w-[16px] cursor-pointer  h-[16px];
+.Acord-Setting-icons-selected {
+  @apply bg-primary-color #{!important};
 }
+
 .Acord-Setting-alertIcon {
   @apply bg-[url('./Acord/alert.svg')] w-[16px] cursor-pointer  h-[16px];
-}
-.Acord-Setting-logoutIcon {
-  @apply bg-[url('./Acord/logout.svg')] w-[16px] cursor-pointer  h-[16px];
-}
-.Acord-Setting-settingIcon {
-  @apply bg-[url('./Acord/setting.svg')] w-[16px]   h-[16px]  z-[20]  absolute top-7 right-4 cursor-pointer;
 }
 
 .Acord-Setting-languageListContainer {
@@ -63,4 +63,21 @@
 }
 .Acord-Setting-listItemSure {
   @apply text-[#DC3545];
+}
+
+.Acord-Setting-historyIcon {
+  @apply w-4 cursor-pointer bg-[#253343]  h-4;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("./src/assets/Acord/broom.svg");
+}
+.Acord-Setting-logoutIcon {
+  @apply w-4 cursor-pointer bg-[#253343]  h-4;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-image: url("./src/assets/Acord/logout.svg");
 }
