@@ -5,5 +5,5 @@
   @apply w-[100%] h-[37px]  rounded-[8px] placeholder:text-secondary-color/40 placeholder:leading-[20px] placeholder:text-[14px] placeholder:font-[300] focus:outline-none  leading-[20px] text-[14px] font-[300] bg-[#F5F7FA] px-3 py-0 pr-[40px]  text-secondary-color;
 }
 .Acord-ChatTextInput-sendIcon {
-  @apply bg-[url('./src/assets/Acord/sendIcon2.svg')] w-[20px] cursor-pointer  h-[21px] absolute z-[20] right-[10px];
+  @apply bg-[url('/Acord/sendIcon2.svg')] w-[20px] cursor-pointer  h-[21px] absolute z-[20] right-[10px];
 }

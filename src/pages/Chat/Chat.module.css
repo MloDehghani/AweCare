@@ -50,13 +50,13 @@
   @apply w-[56px] h-[56px]  border-[1px] border-white flex justify-center cursor-pointer items-center rounded-full;
 }
 .horizontalSuggestionIcon {
-  @apply bg-[url('./src/assets/Acord/hSuggest.svg')] w-[25px]  h-[23px];
+  @apply bg-[url('/Acord/hSuggest.svg')] w-[25px]  h-[23px];
 }
 .keyboardIcon {
-  @apply bg-[url('./src/assets/Acord/keyboard3.svg')] w-[25px]  h-[23px];
+  @apply bg-[url('/Acord/keyboard3.svg')] w-[25px]  h-[23px];
 }
 .sendIcon {
-  @apply bg-[url('./src/assets/Acord/Send.svg')] w-[25px]  h-[23px] absolute z-[20] right-[10px];
+  @apply bg-[url('/Acord/Send.svg')] w-[25px]  h-[23px] absolute z-[20] right-[10px];
 }
 .settingIcon {
   /* @apply bg-primary-color w-[25px] h-[25px] bg-[url("./src/assets/Acord/setting.svg")] cursor-pointer z-20 top-4 right-4 absolute; */

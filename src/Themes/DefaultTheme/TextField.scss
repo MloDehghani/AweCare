@@ -18,10 +18,10 @@
   @apply cursor-pointer;
 }
 .Acord-TextField-icon-eye {
-  @apply bg-[url('./src/assets/Acord/eye.svg')] w-[25px] h-[22px];
+  @apply bg-[url('/Acord/eye.svg')] w-[25px] h-[22px];
 }
 .Acord-TextField-icon-eyeOff {
-  @apply bg-[url('./src/assets/Acord/eyeOff.svg')] w-[25px] h-[22px];
+  @apply bg-[url('/Acord/eyeOff.svg')] w-[25px] h-[22px];
 }
 .Acord-TextField-error {
   @apply text-red-500 text-xs -mt-1;

@@ -51,8 +51,10 @@ const Chat = () => {
   //   string | null
   // >(null);
   const [selectedLangCode, setSelectedlangCode] = useState({
-    lan: "English",
-    code: "en-US",
+    // lan: "English",
+    // code: "en-US",
+    lan: "",
+    code: "",
   });
   const [suggs, setSuggs] = useState<Array<string>>([]);
   const [textInputClicked, setTextInputClicked] = useState(false);

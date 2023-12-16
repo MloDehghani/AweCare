@@ -2,7 +2,7 @@
   @apply pt-10  h-[80vh] flex justify-center w-[100%] overflow-y-scroll;
 }
 .Acord-ChatSection-aiIcon {
-  @apply bg-[url('./src/assets/Acord/aiIcon.svg')] w-[33px]  h-[32px];
+  @apply bg-[url('/Acord/aiIcon.svg')] w-[33px]  h-[32px];
 }
 .Acord-ChatSection-secondDiv {
   @apply w-[90%];
